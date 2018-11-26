@@ -1,10 +1,13 @@
 Defaults always_set_home
-Defaults env_reset
 Defaults mail_badpass
+Defaults match_group_by_gid
+Defaults env_reset
+Defaults env_keep = "{{ sudo_env_keep | join(" ") }}"
 Defaults secure_path = "{{ sudo_secure_path | join(":") }}"
 
 root ALL=(ALL) ALL
-%sudo ALL=(ALL) NOPASSWD: ALL
-%admin ALL=(ALL) NOPASSWD: ALL
+{% for group in sudo_groups %}
+%{{ group }} ALL=(ALL) NOPASSWD: ALL
+{% endfor %}
 
 #includedir /etc/sudoers.d

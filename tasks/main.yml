@@ -7,6 +7,14 @@
   tags:
     - sudo
 
+- name: create group
+  group:
+    name: sudo
+    system: yes
+    state: present
+  tags:
+    - sudo
+
 - name: write sudoers
   template:
     src: sudoers.j2
