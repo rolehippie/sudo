@@ -1,5 +1,15 @@
+- name: os variables
+  include_vars: '{{ item }}'
+  with_first_found:
+    - '{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml'
+    - '{{ ansible_distribution }}.yml'
+    - '{{ ansible_os_family }}.yml'
+  tags:
+    - sudo
+
 - name: install packages
-  with_items:
+  when: sudo_install_package | default(True)
+  loop:
     - sudo
   package:
     name: '{{ item }}'
@@ -8,8 +18,9 @@
     - sudo
 
 - name: create group
+  loop: '{{ sudo_groups }}'
   group:
-    name: sudo
+    name: '{{ item }}'
     system: yes
     state: present
   tags:
@@ -19,5 +30,6 @@
   template:
     src: sudoers.j2
     dest: /etc/sudoers
+    validate: /usr/sbin/visudo -cf %s
   tags:
     - sudo
