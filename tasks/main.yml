@@ -1,14 +1,4 @@
-- name: os variables
-  include_vars: '{{ item }}'
-  with_first_found:
-    - '{{ ansible_distribution | lower }}-{{ ansible_distribution_version }}.yml'
-    - '{{ ansible_distribution | lower }}.yml'
-    - '{{ ansible_os_family | lower }}.yml'
-  tags:
-    - sudo
-
 - name: install packages
-  when: sudo_install_package | default(True)
   loop:
     - sudo
   package:

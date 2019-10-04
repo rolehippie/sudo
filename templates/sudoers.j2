@@ -1,11 +1,11 @@
 Defaults always_set_home
 Defaults env_reset
-Defaults env_keep = "{{ (sudo_env_keep if sudo_env_keep | length > 0 else sudo_default_env_keep) | join(" ") }}"
-Defaults secure_path = "{{ (sudo_secure_path if sudo_secure_path | length > 0 else sudo_default_secure_path) | join(":") }}"
+Defaults env_keep = "{{ sudo_env_keep | join(" ") }}"
+Defaults secure_path = "{{ sudo_secure_path | join(":") }}"
 
 root ALL=(ALL) ALL
 {% for group in sudo_groups %}
 %{{ group }} ALL=(ALL) NOPASSWD: ALL
 {% endfor %}
 
-#includedir {{ sudo_include_dir }}
+#includedir /etc/sudoers.d
