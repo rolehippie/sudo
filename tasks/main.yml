@@ -1,25 +1,29 @@
-- name: install packages
+# Standards: 0.1
+---
+- name: Install required packages
   loop:
     - sudo
   package:
-    name: '{{ item }}'
+    name: "{{ item }}"
     state: present
   tags:
     - sudo
 
-- name: create group
-  loop: '{{ sudo_groups }}'
+- name: Create defined group
+  loop: "{{ sudo_groups }}"
   group:
-    name: '{{ item }}'
-    system: yes
+    name: "{{ item }}"
+    system: True
     state: present
   tags:
     - sudo
 
-- name: write sudoers
+- name: Write sudoers config
   template:
     src: sudoers.j2
     dest: /etc/sudoers
     validate: /usr/sbin/visudo -cf %s
   tags:
     - sudo
+
+...
