@@ -1,3 +1,6 @@
+# Standards: 0.1
+---
+# @var sudo_secure_path:description: List of secure executable paths
 sudo_secure_path:
   - /usr/local/sbin
   - /usr/local/bin
@@ -8,6 +11,7 @@ sudo_secure_path:
   - /usr/X11R6/bin
   - /snap/bin
 
+# @var sudo_env_keep:description: List of environment to keep
 sudo_env_keep:
   - LANG
   - LC_ADDRESS
@@ -27,7 +31,10 @@ sudo_env_keep:
   - LINGUAS
   - XDG_SESSION_COOKIE
 
+# @var sudo_groups:description: List of groups to create and use
 sudo_groups:
   - admin
   - sudo
   - wheel
+
+...
