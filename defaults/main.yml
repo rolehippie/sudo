@@ -1,4 +1,4 @@
-# Standards: 0.1
+# Standards: 1.2
 ---
 # @var sudo_secure_path:description: List of secure executable paths
 sudo_secure_path:
