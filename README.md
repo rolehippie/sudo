@@ -19,6 +19,7 @@ Building and improving this Ansible role have been sponsored by my current and p
 - [Default Variables](#default-variables)
   - [sudo_env_keep](#sudo_env_keep)
   - [sudo_groups](#sudo_groups)
+  - [sudo_rules](#sudo_rules)
   - [sudo_secure_path](#sudo_secure_path)
 - [Discovered Tags](#discovered-tags)
 - [Dependencies](#dependencies)
@@ -72,6 +73,16 @@ sudo_groups:
   - admin
   - sudo
   - wheel
+```
+
+### sudo_rules
+
+List of additional rules
+
+#### Default value
+
+```YAML
+sudo_rules: []
 ```
 
 ### sudo_secure_path

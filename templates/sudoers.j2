@@ -7,5 +7,11 @@ root ALL=(ALL) ALL
 {% for group in sudo_groups %}
 %{{ group }} ALL=(ALL) NOPASSWD: ALL
 {% endfor %}
+{% if sudo_rules | default(False) %}
+
+{% for rule in sudo_rules | default([]) %}
+{{ rule }}
+{% endfor %}
+{% endif %}
 
 #includedir /etc/sudoers.d

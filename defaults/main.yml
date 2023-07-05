@@ -37,4 +37,7 @@ sudo_groups:
   - sudo
   - wheel
 
+# @var sudo_rules:description: List of additional rules
+sudo_rules: []
+
 ...
