@@ -1,9 +1,8 @@
-# Standards: 1.2
 ---
 - name: Install required packages
   loop:
     - sudo
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   tags:
@@ -11,7 +10,7 @@
 
 - name: Create defined group
   loop: "{{ sudo_groups }}"
-  group:
+  ansible.builtin.group:
     name: "{{ item }}"
     system: True
     state: present
@@ -19,7 +18,7 @@
     - sudo
 
 - name: Write sudoers config
-  template:
+  ansible.builtin.template:
     src: sudoers.j2
     dest: /etc/sudoers
     validate: /usr/sbin/visudo -cf %s
