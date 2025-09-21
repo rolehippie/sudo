@@ -12,7 +12,7 @@
   loop: "{{ sudo_groups }}"
   ansible.builtin.group:
     name: "{{ item }}"
-    system: True
+    system: true
     state: present
   tags:
     - sudo

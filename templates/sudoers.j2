@@ -7,9 +7,9 @@ root ALL=(ALL) ALL
 {% for group in sudo_groups %}
 %{{ group }} ALL=(ALL) NOPASSWD: ALL
 {% endfor %}
-{% if sudo_rules | default(False) %}
+{% if sudo_rules | length > 0 %}
 
-{% for rule in sudo_rules | default([]) %}
+{% for rule in sudo_rules %}
 {{ rule }}
 {% endfor %}
 {% endif %}
