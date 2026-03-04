@@ -59,6 +59,15 @@ sudo_env_keep:
   - LANGUAGE
   - LINGUAS
   - XDG_SESSION_COOKIE
+  - GREP_COLOR
+  - GIT_AUTHOR_*
+  - GIT_COMMITTER_*
+  - EMAIL
+  - DEBEMAIL
+  - DEBFULLNAME
+  - SSH_AGENT_PID
+  - SSH_AUTH_SOCK
+  - GPG_AGENT_INFO
 ```
 
 ### sudo_groups
